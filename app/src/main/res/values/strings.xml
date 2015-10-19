@@ -24,4 +24,6 @@
     <string name="numDe">Números de: </string>
     <string name="borrasteA">Borraste a: </string>
     <string name="opcional">Opcional</string>
+    <string name="ordenaAsc">Ordena ascendiente</string>
+    <string name="ordenaDesc">Ordena descendientemente</string>
 </resources>

@@ -8,7 +8,9 @@ import android.provider.ContactsContract;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -46,6 +48,9 @@ public class Agenda {
     }
     public static void ordenar(){
         Collections.sort(agenda);
+    }
+    public static void ordenaInverso(){
+        Collections.sort(agenda, new ComparatorNombre());
     }
     public static List<Contacto> getListaContactos(Context contexto){
 

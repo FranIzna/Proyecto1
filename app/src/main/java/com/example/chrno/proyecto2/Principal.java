@@ -62,10 +62,16 @@ public class Principal extends AppCompatActivity {
             añadir();
             return true;
         }
-//        if(id==R.id.action_actualizar) {
-//            actualiza();
-//            return true;
-//        }
+        if(id==R.id.action_ordena_asc) {
+            Agenda.ordenar();
+            cl.notifyDataSetChanged();
+            return true;
+        }
+        if(id==R.id.action_ordena_desc) {
+            Agenda.ordenaInverso();
+            cl.notifyDataSetChanged();
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
