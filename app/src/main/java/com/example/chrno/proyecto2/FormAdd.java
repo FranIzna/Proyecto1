@@ -44,7 +44,6 @@ public class FormAdd extends AppCompatActivity {
                 nums.add(tlf1);
                 if(telf2.length()>0){
                     tlf2=telf2.getText().toString();
-                    System.out.println("a");
                     nums.add(tlf2);
                 } if(telf3.length()>0){
                     tlf3=telf3.getText().toString();
