@@ -177,6 +177,14 @@ public class Principal extends AppCompatActivity {
         startActivity(i);
     }
     TextView telf2,telf3,telf4;
+    public void asc(View v){
+        Agenda.ordenar();
+        cl.notifyDataSetChanged();
+    }
+    public void desc(View v){
+        Agenda.ordenaInverso();
+        cl.notifyDataSetChanged();
+    }
 
 //    public void mostrar2(View v){
 //        FormAdd.mostrar2(v);
