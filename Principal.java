@@ -1,37 +1,34 @@
 package com.example.chrno.proyecto2;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.ContextMenu;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.lang.reflect.Type;
-import java.sql.SQLOutput;
-import java.text.Normalizer;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Principal extends AppCompatActivity {
-    private ListView lv;
     private static ClaseAdaptador cl;
+    private ListView lv;
     private List<Contacto> agenda;//creo un arraylist que llenare con los contactos y mas tarde le pasare a la clase adaptador
+    private TextView telf2, telf3, telf4;
+    private Intent i;
+
+    public static void actualizar() {
+        Agenda.ordenar();
+        cl.notifyDataSetChanged();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,14 +119,16 @@ public class Principal extends AppCompatActivity {
             default: return super.onContextItemSelected(item);
         }
     }
-    private Intent i;
+
     public void add(View v){
         añadir();
     }
+
     public void añadir(){
          i = new Intent(this, FormAdd.class);
         startActivity(i);
     }
+
     public void editar(int pos){
          i = new Intent(this, FormEdit.class);
         Bundle b=new Bundle();
@@ -140,6 +139,7 @@ public class Principal extends AppCompatActivity {
 
 //       actualiza();
     }
+
     public void borrar(final int pos){
         String s=this.getString(R.string.confBorrar)+agenda.get(pos).getNombre()+this.getString(R.string.interrogacion);
         AlertDialog.Builder dialogo1 = new AlertDialog.Builder(this);
@@ -154,13 +154,11 @@ public class Principal extends AppCompatActivity {
         });
         dialogo1.show();
     }
+
     public void actualiza(){
         cl.notifyDataSetChanged();
     }
-    public static void actualizar(){
-        Agenda.ordenar();
-        cl.notifyDataSetChanged();
-    }
+
     public void Tostada(String s){
         Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
     }
@@ -176,7 +174,16 @@ public class Principal extends AppCompatActivity {
         Intent i = new Intent(Intent.ACTION_CALL, numero);
         startActivity(i);
     }
-    TextView telf2,telf3,telf4;
+
+    public void asc(View v) {
+        Agenda.ordenar();
+        cl.notifyDataSetChanged();
+    }
+
+    public void desc(View v) {
+        Agenda.ordenaInverso();
+        cl.notifyDataSetChanged();
+    }
 
 //    public void mostrar2(View v){
 //        FormAdd.mostrar2(v);
@@ -190,3 +197,5 @@ public class Principal extends AppCompatActivity {
 //
 //    }
 }
+
+
